@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# Streamlit local settings & secrets
+.streamlit/secrets.toml
+
+# Environment variables & secrets
+.env
+.env.*
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Operating System & IDE files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary scratch directories
+scratch/

@@ -1,0 +1,1 @@
+"""ClimateAI India - Core modules"""

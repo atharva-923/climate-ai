@@ -284,12 +284,26 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Safely remove ONLY the toolbar (Deploy & Menu buttons) to avoid breaking layout */
-    [data-testid="stToolbar"] {
+    /* Remove Streamlit's native header and its reserved top space */
+    header[data-testid="stHeader"] {
         display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
     }
 
-    .main .block-container {
+    div[data-testid="stAppViewContainer"] {
+        padding-top: 0 !important;
+    }
+
+    div[data-testid="stAppViewContainer"] > .main {
+        padding-top: 0 !important;
+    }
+
+    div[data-testid="stMain"] {
+        padding-top: 0 !important;
+    }
+
+    div.block-container, div[data-testid="stMainBlockContainer"] {
         max-width: 96% !important;
         padding-top: 1.2rem !important;
         padding-bottom: 2rem !important;

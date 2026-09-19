@@ -324,24 +324,31 @@ st.markdown("""
     div[data-testid="stRadio"] [role="radiogroup"] {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
+        flex-wrap: nowrap;
+        gap: 6px;
         background: rgba(12, 16, 32, 0.85);
         border: 1px solid rgba(167, 139, 250, 0.2);
         border-radius: 14px;
-        padding: 8px;
+        padding: 6px;
         margin-bottom: 20px;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        width: 100%;
+        justify-content: center;
     }
 
     div[data-testid="stRadio"] [role="radiogroup"] > label {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 10px;
-        padding: 8px 18px;
+        padding: 8px 10px;
         color: #94A3B8;
         font-weight: 600;
-        font-size: 0.88rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         cursor: pointer;
         margin: 0;

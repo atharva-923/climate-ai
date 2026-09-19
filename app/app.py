@@ -279,16 +279,19 @@ st.markdown("""
         100% { border-color: rgba(124, 58, 237, 0.3); box-shadow: 0 0 18px rgba(124, 58, 237, 0.12); }
     }
 
-    /* Hide sidebar completely and top header */
+    /* Hide sidebar completely */
     [data-testid="stSidebar"], section[data-testid="stSidebar"], div[data-testid="collapsedControl"] {
         display: none !important;
     }
-    header[data-testid="stHeader"], .stApp > header {
+    
+    /* Safely remove ONLY the toolbar (Deploy & Menu buttons) to avoid breaking layout */
+    [data-testid="stToolbar"] {
         display: none !important;
     }
+
     .main .block-container {
         max-width: 96% !important;
-        padding-top: 0.5rem !important;
+        padding-top: 1.2rem !important;
         padding-bottom: 2rem !important;
     }
 

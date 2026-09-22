@@ -287,7 +287,7 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
 
 ## ⚠️ Disclaimer
 
-This software is developed for educational, research, and demonstration purposes. **Do not use as a primary source for critical aviation dispatch, emergency navigation, or official weather forecasting.**
+This software is developed for educational, research, and demonstration purposes. **Do not use as a primary source for critical aviation dispatch, emergency navigation, or official weather forecasting and was Hackathin Topic.**
 
 ---
 

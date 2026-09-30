@@ -116,32 +116,34 @@ real-time telemetry ticker, and interactive Doppler-style radar maps.
 ```
 climate-ai/
 │
-├── app/
-│   └── app.py                      # Streamlit platform (~2,600 lines, Obsidian Glass UI)
+├── frontend/
+│   ├── app/
+│   │   └── app.py                  # Streamlit platform (~2,600 lines, Obsidian Glass UI)
+│   └── launch_app.bat              # One-click Windows launcher
 │
-├── src/
-│   ├── __init__.py
-│   ├── preprocessing.py            # Cleans raw records & handles missing data
-│   ├── features.py                 # Cyclical temporal features, lag vars, rolling stats
-│   ├── live_weather.py             # Open-Meteo API, AQI engine, batch fetch, aerospace telemetry
-│   ├── train_temperature.py        # XGBoost temperature regression pipeline
-│   └── train_rainfall.py           # XGBoost rainfall multi-class classifier pipeline
-│
-├── models/
-│   ├── temperature_model.pkl       # Serialized XGBoost temperature regressor
-│   ├── temperature_metrics.pkl     # Validation & test metrics
-│   ├── rainfall_model.pkl          # Serialized XGBoost rainfall classifier
-│   ├── rainfall_encoder.pkl        # Label encoder for rainfall classes
-│   └── rainfall_metrics.pkl        # Validation & test metrics
-│
-├── data/
-│   ├── raw/                        # Historical CSV datasets (50 Indian cities, 2010–2019)
-│   └── processed/                  # Processed & feature-engineered datasets
+├── backend/
+│   ├── src/
+│   │   ├── __init__.py
+│   │   ├── preprocessing.py        # Cleans raw records & handles missing data
+│   │   ├── features.py             # Cyclical temporal features, lag vars, rolling stats
+│   │   ├── live_weather.py         # Open-Meteo API, AQI engine, batch fetch, aerospace telemetry
+│   │   ├── train_temperature.py    # XGBoost temperature regression pipeline
+│   │   └── train_rainfall.py       # XGBoost rainfall multi-class classifier pipeline
+│   │
+│   ├── models/
+│   │   ├── temperature_model.pkl   # Serialized XGBoost temperature regressor
+│   │   ├── temperature_metrics.pkl # Validation & test metrics
+│   │   ├── rainfall_model.pkl      # Serialized XGBoost rainfall classifier
+│   │   ├── rainfall_encoder.pkl    # Label encoder for rainfall classes
+│   │   └── rainfall_metrics.pkl    # Validation & test metrics
+│   │
+│   ├── data/
+│   │   ├── raw/                    # Historical CSV datasets (50 Indian cities, 2010–2019)
+│   │   └── processed/              # Processed & feature-engineered datasets
+│   └── run_pipeline.bat            # Full ML pipeline runner (Windows)
 │
 ├── requirements.txt                # Python package dependencies
-├── launch_app.bat                  # One-click Windows launcher
-├── install.bat                     # One-click dependency installer (Windows)
-└── run_pipeline.bat                # Full ML pipeline runner (Windows)
+└── install.bat                     # One-click dependency installer (Windows)
 ```
 
 ---
@@ -182,17 +184,18 @@ pip install -r requirements.txt
 
 **Option A — One-click launcher (Windows only):**
 ```cmd
+cd frontend
 launch_app.bat
 ```
 
 **Option B — Command line (all platforms):**
 ```bash
-streamlit run app/app.py
+streamlit run frontend/app/app.py
 ```
 
 The app opens at **http://localhost:8501** in your browser.
 
-> **Note:** Pre-trained models are included in `models/`. No retraining is required to run the app.
+> **Note:** Pre-trained models are included in `backend/models/`. No retraining is required to run the app.
 
 ---
 
@@ -202,19 +205,19 @@ To rebuild the processed datasets and retrain models from scratch:
 
 ```bash
 # Step 1: Clean and preprocess raw data
-python src/preprocessing.py
+python backend/src/preprocessing.py
 
 # Step 2: Extract cyclical, rolling, and lag features
-python src/features.py
+python backend/src/features.py
 
 # Step 3: Train the XGBoost Temperature Regressor
-python src/train_temperature.py
+python backend/src/train_temperature.py
 
 # Step 4: Train the XGBoost Rainfall Classifier
-python src/train_rainfall.py
+python backend/src/train_rainfall.py
 ```
 
-> On Windows you can also run `run_pipeline.bat` to execute all steps in sequence.
+> On Windows you can also run `backend/run_pipeline.bat` to execute all steps in sequence.
 
 ---
 
